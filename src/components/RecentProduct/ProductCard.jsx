@@ -48,7 +48,7 @@ const ProductCard = ({ product }) => {
           </div>
         </Link>
         <button
-          className="w-full bg-main text-white p-1 py-2 mt-4 rounded-lg font-semibold"
+          className="w-full bg-main text-white p-1 py-2 mt-4 rounded-lg font-semibold active:py-7"
           onClick={() => addToCart(product.id)}
         >
           ADD TO CART

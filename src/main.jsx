@@ -11,12 +11,12 @@ import UserContextProvider from "./context/UserContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <UserContextProvider>
-      <WashListContextProvider>
-        <CartContextProvider>
+    <WashListContextProvider>
+      <CartContextProvider>
+        <UserContextProvider>
           <App />
-        </CartContextProvider>
-      </WashListContextProvider>
-    </UserContextProvider>
+        </UserContextProvider>
+      </CartContextProvider>
+    </WashListContextProvider>
   </StrictMode>
 );
