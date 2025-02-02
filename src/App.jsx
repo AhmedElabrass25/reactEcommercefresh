@@ -17,18 +17,8 @@ import AllOrders from "./components/AllOrders/AllOrders";
 import WashList from "./components/Washlist/WashList";
 import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import VerifyResetCode from "./components/ForgetPassword/VerifyResetCode";
-import { useContext, useEffect } from "react";
-import { CartContext } from "./context/CartContext";
-import { WashListContext } from "./context/WashListContext";
 
 const App = () => {
-  let token = localStorage.getItem("token");
-  let { getCarts } = useContext(CartContext);
-  let { getWatchlistProducts } = useContext(WashListContext);
-  useEffect(() => {
-    getCarts();
-    getWatchlistProducts();
-  }, [token]);
   return (
     <>
       <Toaster />
