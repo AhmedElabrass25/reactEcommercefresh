@@ -20,10 +20,10 @@ const Login = () => {
       setUserToken(res.data.token);
       console.log(res);
       navigate("/");
-      setLoading(false);
     } catch (err) {
       console.log(err.response.data.message);
       setApiError(err.response.data.message);
+    } finally {
       setLoading(false);
     }
   }
@@ -47,6 +47,7 @@ const Login = () => {
     <section>
       <div className="container">
         <form className="md:w-1/2 mx-auto mt-10" onSubmit={formik.handleSubmit}>
+          {/* email Field */}
           <div className="mb-5">
             <label
               htmlFor="email"
@@ -56,6 +57,7 @@ const Login = () => {
             </label>
             <input
               type="email"
+              name="email"
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -71,6 +73,7 @@ const Login = () => {
               {formik.errors.email}
             </div>
           )}
+          {/* password Field */}
           <div className="mb-5">
             <label
               htmlFor="password"
@@ -80,6 +83,7 @@ const Login = () => {
             </label>
             <input
               type="password"
+              name="password"
               value={formik.values.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -95,21 +99,25 @@ const Login = () => {
               {formik.errors.password}
             </div>
           )}
+          {/* Submit Button */}
           <button
             type="submit"
-            className="text-white bg-main hover:main focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+            className="text-white bg-main hover:main focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 flex items-center justify-center"
           >
-            Submit{" "}
-            {loading && (
-              <i className="fas fa-spinner fa-spin text-[18px] ml-3"></i>
+            {loading ? (
+              <i className="fas fa-spinner fa-spin text-[18px]"></i>
+            ) : (
+              "Submit"
             )}
           </button>
         </form>
+        {/* Forgot Password */}
         <div className="text-center">
           <Link className="underline text-main text-lg" to="/forgetpassword">
             Forget Password
           </Link>
         </div>
+        {/* Signup Link */}
         <p className="text-xl mt-3 w-full text-center">
           Do not have an account .{" "}
           <span
@@ -120,6 +128,7 @@ const Login = () => {
             SignUp
           </span>
         </p>
+        {/* API Error Message */}
         {apiError && (
           <div
             className="w-full text-center p-2 my-4 text-[18px] tracking-[1.5px] text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"

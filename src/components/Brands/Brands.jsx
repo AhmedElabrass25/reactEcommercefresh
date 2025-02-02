@@ -13,12 +13,12 @@ const Brands = () => {
       const { data } = await axios.get(
         "https://ecommerce.routemisr.com/api/v1/brands"
       );
-      console.log(data.data);
+      // console.log(data.data);
       setBrands(data?.data);
       setError("");
     } catch (err) {
       setError(err?.response?.data?.message || "Failed to fetch products.");
-      console.error(err?.response?.data?.message);
+      // console.error(err?.response?.data?.message);
     } finally {
       setLoading(false);
     }

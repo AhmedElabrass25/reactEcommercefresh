@@ -13,7 +13,7 @@ const AllOrders = () => {
       let { data } = await axios(
         `https://ecommerce.routemisr.com/api/v1/orders/user/${id}`
       );
-      console.log(data);
+      // console.log(data);
       setOrders(data);
     } catch (error) {
       console.log(error);

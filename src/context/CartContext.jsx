@@ -7,7 +7,7 @@ export let CartContext = createContext(0);
 const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(false);
-  let headers = { token: localStorage.getItem("token") };
+  const getHeaders = () => ({ token: localStorage.getItem("token") });
   // >>>>>>>>>ADD PRODUCT TO CART
   async function addToCart(id) {
     try {
@@ -16,7 +16,7 @@ const CartContextProvider = ({ children }) => {
         {
           productId: id,
         },
-        { headers: headers }
+        { headers: getHeaders() }
       );
       // console.log(data);
       getCarts(); //vip
@@ -45,10 +45,13 @@ const CartContextProvider = ({ children }) => {
   async function getCarts() {
     try {
       setLoading(true);
+      // Always fetch the latest token
+      const token = localStorage.getItem("token");
+      if (!token) throw new Error("No token found. Please log in again.");
       let { data } = await axios(
         "https://ecommerce.routemisr.com/api/v1/cart",
         {
-          headers: headers,
+          headers: getHeaders(),
         }
       );
       // console.log(data);
@@ -56,13 +59,8 @@ const CartContextProvider = ({ children }) => {
       setLoading(false);
       return data;
     } catch (error) {
-      toast.error(
-        error?.response?.data?.message || "faild to get all carts.......!",
-        {
-          style: {
-            minWidth: "600px",
-          },
-        }
+      console.log(
+        error?.response?.data?.message || "faild to get all carts.......!"
       );
     } finally {
       setLoading(false);
@@ -76,7 +74,7 @@ const CartContextProvider = ({ children }) => {
         {
           count: count,
         },
-        { headers: headers }
+        { headers: getHeaders() }
       );
       // console.log(data);
       setCart(data);
@@ -100,7 +98,7 @@ const CartContextProvider = ({ children }) => {
       let { data } = await axios.delete(
         `https://ecommerce.routemisr.com/api/v1/cart/${id}`,
 
-        { headers: headers }
+        { headers: getHeaders() }
       );
       // console.log(data);
       setCart(data);

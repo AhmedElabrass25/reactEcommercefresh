@@ -62,6 +62,7 @@ const ProductDetails = () => {
                 {error}
               </div>
             )}
+            {/* Display Product Details */}
             {product && (
               <>
                 <div className="w-full sm:w-1/4 shadow-myShadow mb-16">
@@ -109,6 +110,7 @@ const ProductDetails = () => {
               </>
             )}
           </div>
+          {/* Relate Products */}
           <div className="row my-10">
             <h2 className="w-full text-center capitalize bg-main mb-6 text-white text-3xl py-2">
               related products

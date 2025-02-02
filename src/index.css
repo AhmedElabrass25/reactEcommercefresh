@@ -3,6 +3,7 @@
 @tailwind utilities;
 body {
   font-family: "Comfortaa", serif;
+  overflow-x: hidden;
 }
 
 :root {

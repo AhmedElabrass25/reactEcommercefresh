@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   let { cart, loading, updateCart, removeCartItem } = useContext(CartContext);
   let allCarts = cart?.data?.products;
-  console.log(allCarts);
+  // console.log(allCarts);
 
   return (
     <section>
       <div className="container">
-        <div className="row w-full overflow-x-auto">
+        <div className="row w-full overflow-x-scroll md:overflow-x-hidden">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
@@ -134,18 +134,18 @@ const Cart = () => {
               </p>
             </div>
           )}
-          <div className="w-full flex justify-between items-center my-10">
-            <h3 className="text-xl capitalize">
-              Total Price :{" "}
-              <span className="text-main"> $ {cart?.data?.totalCartPrice}</span>
-            </h3>
-            <Link
-              to={"/checkout"}
-              className="py-2 px-4 text-white bg-main rounded-md"
-            >
-              CheckOut
-            </Link>
-          </div>
+        </div>
+        <div className="w-full flex justify-between items-center flex-wrap my-10">
+          <h3 className="text-xl capitalize mb-3 sm:mb-0">
+            Total Price :{" "}
+            <span className="text-main"> $ {cart?.data?.totalCartPrice}</span>
+          </h3>
+          <Link
+            to={"/checkout"}
+            className="py-2 px-4 text-white bg-main rounded-md mb-3 sm:mb-0"
+          >
+            CheckOut
+          </Link>
         </div>
       </div>
     </section>
