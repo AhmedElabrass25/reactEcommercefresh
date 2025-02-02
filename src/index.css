@@ -3,7 +3,7 @@
 @tailwind utilities;
 body {
   font-family: "Comfortaa", serif;
-  overflow-x: hidden;
+  /* overflow-x: hidden !important; */
 }
 
 :root {
@@ -19,10 +19,9 @@ body {
 /* (VIP) */
 
 .container {
-  margin: 0px auto;
   width: 100%;
-  padding-left: 30px !important;
-  padding-right: 30px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
 }
 
 .row {

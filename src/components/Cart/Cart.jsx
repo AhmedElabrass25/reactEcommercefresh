@@ -8,11 +8,11 @@ const Cart = () => {
   // console.log(allCarts);
 
   return (
-    <section>
+    <section className="w-full">
       <div className="container">
-        <div className="row w-full overflow-x-scroll md:overflow-x-hidden">
-          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <div className="row overflow-x-scroll md:overflow-hidden">
+          <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead className="w-full text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="px-16 py-3">
                   Image
@@ -124,17 +124,20 @@ const Cart = () => {
                 })}
             </tbody>
           </table>
-          {allCarts?.length == 0 && (
-            <div className="w-full flex items-center justify-center">
-              <p
-                className="p-4 text-white text-[20px] rounded-lg bg-gray-800 my-4"
-                role="alert"
-              >
-                There is no items in cart......!
-              </p>
-            </div>
-          )}
         </div>
+        {/* Empty State */}
+        {!loading && allCarts?.length === 0 && (
+          <div className="text-center py-8 md:hidden">
+            <p className="text-gray-600 text-lg mb-4">Your cart is empty</p>
+            <Link
+              to="/products"
+              className="bg-main text-white px-6 py-2 rounded-lg hover:bg-main-dark"
+            >
+              Continue Shopping
+            </Link>
+          </div>
+        )}
+        {/* Total and Checkout */}
         <div className="w-full flex justify-between items-center flex-wrap my-10">
           <h3 className="text-xl capitalize mb-3 sm:mb-0">
             Total Price :{" "}
