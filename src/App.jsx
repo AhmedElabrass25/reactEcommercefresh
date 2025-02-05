@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import NotFound from "./components/NotFound/NotFound";
 import MyNav from "./components/MyNav/MyNav";
 import Footer from "./components/Footer/Footer";
@@ -22,7 +22,7 @@ const App = () => {
   return (
     <>
       <Toaster />
-      <BrowserRouter>
+      <HashRouter>
         <MyNav />
         <Routes>
           <Route
@@ -105,7 +105,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 };
