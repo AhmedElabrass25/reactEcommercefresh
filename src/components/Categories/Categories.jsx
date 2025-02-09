@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
 import axios from "axios";
+import PageTitle from "../PageTitle";
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState("");
@@ -30,9 +31,7 @@ const Categories = () => {
   return (
     <section>
       <div className="container">
-        <h2 className="bg-main text-white w-full text-center mb-5 rounded-sm py-2">
-          Categories{" "}
-        </h2>
+        <PageTitle title="Categories" />
         <div className="flex flex-wrap items-center justify-center gap-5">
           {loading && <Loading />}
           {!loading && error && (
@@ -43,6 +42,7 @@ const Categories = () => {
               {error}
             </div>
           )}
+          {/* Categories */}
           {!loading &&
             categories.map((cat) => (
               <div
@@ -50,12 +50,14 @@ const Categories = () => {
                 className="w-full sm:w-[43%] md:w-[32%] lg:w-[23%] shadow-myShadow mb-5 p-5 text-center"
               >
                 <div className="imgDiv w-full h-[200px] overflow-hidden mb-3">
+                  {/* CATEGORY IMAGE */}
                   <img
                     src={cat?.image}
                     className="w-full h-full hover:scale-110 hover:rotate-[10deg] duration-300 transition-all ease-in "
                     alt=""
                   />
                 </div>
+                {/* CATEGORY NAME */}
                 <p>{cat.name}</p>
               </div>
             ))}

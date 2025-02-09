@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const VerifyResetCode = () => {
+  let navigate = useNavigate();
   const [code, setCode] = useState("");
   const [apiError, setApiError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -22,6 +24,7 @@ const VerifyResetCode = () => {
 
       toast.success("Operation success");
       console.log(res);
+      navigate("/reset-password");
     } catch (err) {
       console.log(err.response.data.message);
       setApiError(err.response.data.message);

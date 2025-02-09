@@ -9,6 +9,7 @@ const Login = () => {
   const [apiError, setApiError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  // <<<<<<<<<<<<< ( Login Function ) >>>>>>>>>>>>>
   async function loginFunc(values) {
     try {
       setLoading(true);
@@ -27,6 +28,7 @@ const Login = () => {
       setLoading(false);
     }
   }
+  // <<<<<<<<<<<<< ( Yup ) >>>>>>>>>>>>>
   let schema = Yup.object().shape({
     email: Yup.string()
       .required("Email is required .")
@@ -35,6 +37,7 @@ const Login = () => {
       .required("password is required .")
       .matches(/^[A-Za-z0-9]\w{4,20}$/, "inValid password ."),
   });
+  // <<<<<<<<<<<<< ( Formik ) >>>>>>>>>>>>>
   let formik = useFormik({
     initialValues: {
       email: "",
@@ -51,7 +54,7 @@ const Login = () => {
           <div className="mb-5">
             <label
               htmlFor="email"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900"
             >
               Your email
             </label>
@@ -77,7 +80,7 @@ const Login = () => {
           <div className="mb-5">
             <label
               htmlFor="password"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900 "
             >
               Your password
             </label>
@@ -112,7 +115,7 @@ const Login = () => {
           </button>
         </form>
         {/* Forgot Password */}
-        <div className="text-center">
+        <div className="text-center mt-3">
           <Link className="underline text-main text-lg" to="/forgetpassword">
             Forget Password
           </Link>

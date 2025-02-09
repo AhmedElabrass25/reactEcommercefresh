@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import Loading from "../Loading/Loading";
 import { CartContext } from "../../context/CartContext";
 import RelatedProducts from "../RelatedProducts/RelatedProducts";
+import PageTitle from "../PageTitle";
 
 const ProductDetails = () => {
   let { addToCart } = useContext(CartContext);
@@ -50,9 +51,7 @@ const ProductDetails = () => {
 
       <section>
         <div className="container">
-          <h1 className="w-full text-center capitalize bg-main mb-6 text-white text-3xl py-2">
-            product details
-          </h1>
+          <PageTitle title=" product details" />
           <div className="row">
             {!loading && error && (
               <div
@@ -65,6 +64,7 @@ const ProductDetails = () => {
             {/* Display Product Details */}
             {product && (
               <>
+                {/* Side Slider */}
                 <div className="w-full sm:w-1/4 shadow-myShadow mb-16">
                   <Slider {...settings} className="w-full">
                     {product.images?.map((img, index) => {
@@ -79,6 +79,7 @@ const ProductDetails = () => {
                     })}
                   </Slider>
                 </div>
+                {/* Description */}
                 <div className="w-full sm:w-3/4 px-10">
                   <p className="w-full mb-1 tracking-[0.5px] text-[25px] ">
                     {product.title}.
@@ -100,7 +101,7 @@ const ProductDetails = () => {
                   </div>
                   <div className="w-full text-center">
                     <button
-                      className="w-full sm:w-[500px] bg-main text-white p-1 py-2 mt-4 rounded-lg font-semibold mb-10"
+                      className="w-full sm:w-[500px] bg-main text-white py-3 mt-4 rounded-md font-semibold mb-10 hover:scale-105 transition-all duration-500"
                       onClick={() => addToCart(product.id)}
                     >
                       ADD TO CART
@@ -112,9 +113,7 @@ const ProductDetails = () => {
           </div>
           {/* Relate Products */}
           <div className="row my-10">
-            <h2 className="w-full text-center capitalize bg-main mb-6 text-white text-3xl py-2">
-              related products
-            </h2>
+            <PageTitle title="related products" />
             <RelatedProducts category={product?.category?.name} />
           </div>
         </div>

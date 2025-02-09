@@ -8,6 +8,7 @@ const RelatedProducts = ({ category }) => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  // >>>>>>>>>>>>>>> Related Products Function.
   async function relatedProductsFunc() {
     try {
       setLoading(true);

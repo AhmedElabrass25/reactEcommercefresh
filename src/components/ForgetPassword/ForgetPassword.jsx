@@ -8,6 +8,7 @@ const ForgetPassword = () => {
   const [apiError, setApiError] = useState("");
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate();
+  // <<<<<<<<<<<<< ( Forget Password Function ) >>>>>>>>>>>>>
   async function forgetPasswordFunc(values) {
     console.log(values);
     let email = values.email;
@@ -30,11 +31,13 @@ const ForgetPassword = () => {
       setLoading(false);
     }
   }
+  // <<<<<<<<<<<<< ( Yup) >>>>>>>>>>>>>
   let schema = Yup.object().shape({
     email: Yup.string()
       .required("Email is required .")
       .email("email is invalid ."),
   });
+  // <<<<<<<<<<<<< ( Formik ) >>>>>>>>>>>>>
   let formik = useFormik({
     initialValues: {
       email: "",
@@ -42,6 +45,7 @@ const ForgetPassword = () => {
     onSubmit: forgetPasswordFunc,
     validationSchema: schema,
   });
+  //<<<<<<>>>>>>>>>>>>
   return (
     <div>
       <section>
@@ -53,7 +57,7 @@ const ForgetPassword = () => {
             <div className="mb-5">
               <label
                 htmlFor="email"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Your email
               </label>
@@ -74,6 +78,7 @@ const ForgetPassword = () => {
                 {formik.errors.email}
               </div>
             )}
+            {/* Submit Button */}
             <button
               type="submit"
               className="text-white bg-main hover:main focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"

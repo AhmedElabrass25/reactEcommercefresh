@@ -14,6 +14,7 @@ function WashListContextProvider({ children }) {
   const addProductToWashList = async (id) => {
     // console.log(id);
     try {
+      setLoading(true);
       const { data } = await axios.post(
         "https://ecommerce.routemisr.com/api/v1/wishlist",
         { productId: id },
@@ -25,6 +26,8 @@ function WashListContextProvider({ children }) {
     } catch (err) {
       toast.error("Faild to add to watchlist");
       console.error(err?.response?.data?.message);
+    } finally {
+      setLoading(false);
     }
   };
   {
@@ -54,6 +57,7 @@ function WashListContextProvider({ children }) {
   }
   const removeItemFromWatchlist = async (id) => {
     try {
+      setLoading(true);
       const { data } = await axios.delete(
         `https://ecommerce.routemisr.com/api/v1/wishlist/${id}`,
         { headers: getHeaders() }
@@ -69,6 +73,8 @@ function WashListContextProvider({ children }) {
     } catch (err) {
       toast.error(" Failed to remove product");
       console.error(err?.response?.data?.message);
+    } finally {
+      setLoading(false);
     }
   };
 

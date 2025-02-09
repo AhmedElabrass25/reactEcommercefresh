@@ -1,5 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-import style from "./MyNav.module.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/freshcart-logo.svg";
 import { useContext, useState } from "react";
@@ -26,13 +24,13 @@ const MyNav = () => {
               <Link to="/" className="w-32 md:w-40">
                 <img className="w-full" src={logo} alt="Your Company" />
               </Link>
-              {/* Links */}
+              {/* Links In Large Page*/}
               <div className="hidden lg:block">
                 {userToken && (
                   <div className="ml-5 md:max-lg:ml-2 flex items-baseline space-x-4">
                     <NavLink
                       to="/"
-                      className="active rounded-md px-2 py-2 text-[18px] md:max-lg:text-[16px] font-medium text-gray-500"
+                      className="rounded-md px-2 py-2 text-[18px] md:max-lg:text-[16px] font-medium text-gray-500"
                     >
                       Home
                     </NavLink>
@@ -64,6 +62,7 @@ const MyNav = () => {
                 )}
               </div>
             </div>
+            {/* Login & Register Button In Large Page  + Cart Icon*/}
             <div className="hidden lg:block">
               <div className="ml-4 flex items-center md:ml-6">
                 {userToken ? (
@@ -102,7 +101,7 @@ const MyNav = () => {
               </div>
             </div>
           </div>
-          {/*  */}
+          {/* Display In Mobile */}
           <div className="flex justify-end lg:hidden">
             {/* Mobile menu button */}
             <button
@@ -151,35 +150,34 @@ const MyNav = () => {
         {openMeue && (
           <div className="lg:hidden">
             {userToken && (
-              <div className="space-y-1 px-2 pb-3 pt-2 ml-5 sm:px-3">
+              <div className="px-2 pt-2 mb-5 ml-5 sm:px-3 flex flex-col gap-5">
                 <NavLink
                   to="/"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-500"
-                  aria-current="page"
+                  className="block rounded-md text-base font-medium text-gray-500"
                 >
                   Home
                 </NavLink>
                 <NavLink
                   to="/products"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-500"
+                  className="block rounded-md text-base font-medium text-gray-500"
                 >
                   Products
                 </NavLink>
                 <NavLink
                   to="/categories"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-500"
+                  className="block rounded-md  text-base font-medium text-gray-500"
                 >
                   Categories
                 </NavLink>
                 <NavLink
                   to="/brands"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-500"
+                  className="block rounded-md  text-base font-medium text-gray-500"
                 >
                   Brands
                 </NavLink>
                 <NavLink
                   to="/washlist"
-                  className="rounded-md px-2 py-2 text-[18px] md:max-lg:text-[16px] font-medium text-gray-500"
+                  className="rounded-md  text-[18px] md:max-lg:text-[16px] font-medium text-gray-500"
                 >
                   WashList
                 </NavLink>

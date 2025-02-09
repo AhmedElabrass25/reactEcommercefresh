@@ -33,7 +33,7 @@ const Products = () => {
       <div className="container">
         <div className="row">
           <div className="recentProducts allProducts w-full">
-            <h2 className="bg-main text-white w-full text-center mb-5 rounded-sm py-2">
+            <h2 className="bg-main text-white w-full text-center mb-5 rounded-md py-2">
               All Products
             </h2>
             <div className="row">

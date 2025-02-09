@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NotFound from "./components/NotFound/NotFound";
 import MyNav from "./components/MyNav/MyNav";
 import Footer from "./components/Footer/Footer";
@@ -17,12 +17,13 @@ import AllOrders from "./components/AllOrders/AllOrders";
 import WashList from "./components/Washlist/WashList";
 import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import VerifyResetCode from "./components/ForgetPassword/VerifyResetCode";
+import ResetPassword from "./components/ForgetPassword/ResetPassword";
 
 const App = () => {
   return (
     <>
       <Toaster />
-      <HashRouter>
+      <BrowserRouter>
         <MyNav />
         <Routes>
           <Route
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="login" element={<Login />} />
           <Route path="forgetpassword" element={<ForgetPassword />} />
           <Route path="verifyresetcode" element={<VerifyResetCode />} />
+          <Route path="reset-password" element={<ResetPassword />} />
 
           <Route
             path="products"
@@ -105,7 +107,7 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 };

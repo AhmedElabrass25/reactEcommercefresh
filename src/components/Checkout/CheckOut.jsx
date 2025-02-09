@@ -11,11 +11,12 @@ const CheckOut = () => {
   let headers = {
     token: localStorage.getItem("token"),
   };
+  // <<<<<<<<<<<<< (  login Function ) >>>>>>>>>>>>>
   async function loginFunc(shippingAddress) {
     try {
       setLoading(true);
       let { data } = await axios.post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.cartId}?url=http://localhost:5173`,
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart?.cartId}?url=http://localhost:5173`,
         { shippingAddress: shippingAddress },
         { headers: headers }
       );
@@ -30,6 +31,7 @@ const CheckOut = () => {
       setLoading(false);
     }
   }
+  // <<<<<<<<<<<<< ( Formik ) >>>>>>>>>>>>>
 
   let formik = useFormik({
     initialValues: {
@@ -47,10 +49,11 @@ const CheckOut = () => {
             className="md:w-1/2 mx-auto mt-10"
             onSubmit={formik.handleSubmit}
           >
+            {/* Your City */}
             <div className="mb-5">
               <label
                 htmlFor="city"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Your City
               </label>
@@ -63,10 +66,11 @@ const CheckOut = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-[18px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               />
             </div>
+            {/* Details */}
             <div className="mb-5">
               <label
                 htmlFor="details"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-900 "
               >
                 Your Details
               </label>
@@ -79,10 +83,11 @@ const CheckOut = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-[18px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               />
             </div>
+            {/* Phone */}
             <div className="mb-5">
               <label
                 htmlFor="phone"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-900"
               >
                 Your Phone
               </label>
@@ -95,7 +100,6 @@ const CheckOut = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-[18px] rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               />
             </div>
-
             <button
               type="submit"
               className="text-white bg-main hover:main focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"

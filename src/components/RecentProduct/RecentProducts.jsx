@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./recentProducts.css";
 import Loading from "../Loading/Loading";
 import ProductCard from "./ProductCard";
+import PageTitle from "../PageTitle";
 
 const RecentProducts = () => {
   const [products, setProducts] = useState([]);
@@ -31,9 +32,7 @@ const RecentProducts = () => {
 
   return (
     <div className="recentProducts w-full">
-      <h2 className="bg-main text-white w-full text-center mb-5 rounded-sm py-2">
-        Recent Products
-      </h2>
+      <PageTitle title="Recent Products" />
       <div className="row">
         {loading && <Loading />}
         {!loading && error && (
@@ -44,6 +43,7 @@ const RecentProducts = () => {
             {error}
           </div>
         )}
+        {/* Display Products */}
         {!loading &&
           products.map((product) => (
             <ProductCard key={product.id} product={product} />

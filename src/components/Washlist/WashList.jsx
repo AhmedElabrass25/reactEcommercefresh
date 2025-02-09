@@ -29,6 +29,7 @@ const WashList = () => {
               {error}
             </div>
           )}
+          {/* <<<<<<<<<<<<<<<< Display WashList Products  >>>>>>>>>>>>>>>>>*/}
           {products?.length &&
             products.map((product) => {
               return (
@@ -37,6 +38,7 @@ const WashList = () => {
                   className="relative card w-full sm:w-[45%] md:w-[32%] lg:w-[23%] p-4 mb-5 shadow-myShadow rounded-sm"
                 >
                   <Link to={`/productdetails/${product.id}`}>
+                    {/* Category Image*/}
                     <div className="imgDiv w-full h-[300px] mb-3">
                       <img
                         src={product.imageCover}
@@ -44,10 +46,13 @@ const WashList = () => {
                         alt={product.title}
                       />
                     </div>
+                    {/* Category Name*/}
                     <p className="text-main mb-1">{product?.category?.name}</p>
+                    {/* Category Title*/}
                     <p className="capitalize">
                       {product?.title?.split(" ").slice(0, 2).join(" ")}
                     </p>
+                    {/*Price 7 Rating*/}
                     <div className="w-full flex items-center justify-between mt-3">
                       <span>{`${product.price} EGP`}</span>
                       <span>
@@ -56,12 +61,17 @@ const WashList = () => {
                       </span>
                     </div>
                   </Link>
-                  <button
-                    className="w-full bg-red-900 text-white p-1 py-2 mt-4 rounded-lg font-semibold"
-                    onClick={() => removeItemFromWatchlist(product.id)}
-                  >
-                    Remove
-                  </button>
+                  {/* Submit Button*/}
+                  {loading ? (
+                    <Loading />
+                  ) : (
+                    <button
+                      className="w-full bg-red-900 text-white p-1 py-2 mt-4 rounded-lg font-semibold"
+                      onClick={() => removeItemFromWatchlist(product.id)}
+                    >
+                      Remove
+                    </button>
+                  )}
                 </div>
               );
             })}

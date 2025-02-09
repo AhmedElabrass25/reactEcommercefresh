@@ -1,10 +1,7 @@
-.recentProducts .row .card button {
-  opacity: 0;
+.recentProducts .row .card {
   transition: all 0.5s ease;
-  transform: translateY(100%);
 }
 
-.recentProducts .row .card:hover button {
-  transform: translateY(0%);
-  opacity: 1;
+.recentProducts .row .card:hover {
+  /* transform: scale(1.03); */
 }

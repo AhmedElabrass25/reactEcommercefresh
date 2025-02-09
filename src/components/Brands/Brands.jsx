@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Loading from "../Loading/Loading";
 import axios from "axios";
+import PageTitle from "../PageTitle";
 const Brands = () => {
   const [brands, setBrands] = useState([]);
   const [error, setError] = useState("");
@@ -30,9 +31,7 @@ const Brands = () => {
   return (
     <section>
       <div className="container">
-        <h2 className="bg-main text-white w-full text-center mb-5 rounded-sm py-2 capitalize">
-          All brands
-        </h2>
+        <PageTitle title="All brands" />
         <div className="row">
           {loading && <Loading />}
           {!loading && error && (

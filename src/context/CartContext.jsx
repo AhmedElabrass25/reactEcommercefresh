@@ -11,6 +11,7 @@ const CartContextProvider = ({ children }) => {
   // >>>>>>>>>ADD PRODUCT TO CART
   async function addToCart(id) {
     try {
+      setLoading(true);
       let { data } = await axios.post(
         "https://ecommerce.routemisr.com/api/v1/cart",
         {
@@ -39,6 +40,8 @@ const CartContextProvider = ({ children }) => {
           },
         }
       );
+    } finally {
+      setLoading(false);
     }
   }
   // >>>>>>>>>GET ALL CARTS
@@ -69,6 +72,8 @@ const CartContextProvider = ({ children }) => {
   // >>>>>>>>>>Update Cart Quantity
   async function updateCart(id, count) {
     try {
+      setLoading(true);
+
       let { data } = await axios.put(
         `https://ecommerce.routemisr.com/api/v1/cart/${id}`,
         {
@@ -78,23 +83,31 @@ const CartContextProvider = ({ children }) => {
       );
       // console.log(data);
       setCart(data);
-      toast.success("The updating " + data.status);
+      toast.success("The updating " + data.status, {
+        position: "top-center",
+        zIndex: "100000",
+      });
       return data;
     } catch (error) {
       toast.error(
         error?.response?.data?.message || "faild to upadate the cart.......!",
         {
+          position: "top-center",
+          zIndex: "100000",
           style: {
             minWidth: "600px",
           },
         }
       );
       // console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
   // >>>>>>>>>>Remove Cart Item
   async function removeCartItem(id) {
     try {
+      setLoading(true);
       let { data } = await axios.delete(
         `https://ecommerce.routemisr.com/api/v1/cart/${id}`,
 
@@ -115,6 +128,8 @@ const CartContextProvider = ({ children }) => {
           },
         }
       );
+    } finally {
+      setLoading(false);
     }
   }
   useEffect(() => {
