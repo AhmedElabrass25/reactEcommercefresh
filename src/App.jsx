@@ -21,10 +21,20 @@ import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import VerifyResetCode from "./components/ForgetPassword/VerifyResetCode";
 import ResetPassword from "./components/ForgetPassword/ResetPassword";
 import Loading from "./components/Loading/Loading";
+import { Offline } from "react-detect-offline";
 
 const App = () => {
   return (
     <>
+      {/*<<<<<<<<<<<<<<<<When User is offline >>>>>>>>>>>>>>>>>>>>>> */}
+      <Offline>
+        <div className="fixed inset-0 p-3 bg-slate-400/50 z-[999999] w-full flex justify-center items-center">
+          <div className="bg-white p-3 font-bold text-red-800">
+            Only shown offline (check your internet)
+          </div>
+        </div>
+      </Offline>
+      {/*<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>>> */}
       <Toaster />
       <BrowserRouter>
         <MyNav />
