@@ -11,9 +11,10 @@ const ProductDetails = () => {
   let { addToCart } = useContext(CartContext);
   const [product, setProduct] = useState("");
   const [loading, setLoading] = useState(false);
+  const [buttonLoading, setButtonLoading] = useState(false);
+
   const [error, setError] = useState("");
   let { id } = useParams();
-  console.log(id);
   var settings = {
     dots: true,
     infinite: true,
@@ -24,6 +25,11 @@ const ProductDetails = () => {
     autoplay: true,
     arrows: false,
   };
+  async function handleAddToCart(id) {
+    setButtonLoading(true);
+    await addToCart(id);
+    setButtonLoading(false);
+  }
   async function getProguctDetails() {
     try {
       setLoading(true);
@@ -102,9 +108,13 @@ const ProductDetails = () => {
                   <div className="w-full text-center">
                     <button
                       className="w-full sm:w-[500px] bg-main text-white py-3 mt-4 rounded-md font-semibold mb-10 hover:scale-105 transition-all duration-500"
-                      onClick={() => addToCart(product.id)}
+                      onClick={() => handleAddToCart(product.id)}
                     >
-                      ADD TO CART
+                      {buttonLoading ? (
+                        <i className="fas fa-spinner fa-spin text-[18px]"></i>
+                      ) : (
+                        " ADD TO CART"
+                      )}
                     </button>{" "}
                   </div>
                 </div>

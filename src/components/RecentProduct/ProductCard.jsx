@@ -1,41 +1,45 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { WashListContext } from "../../context/WashListContext";
-import Loading from "../Loading/Loading";
 
 const ProductCard = ({ product }) => {
-  let { addToCart, loading } = useContext(CartContext);
-  let {
-    loading: wLoading,
-    addProductToWashList,
-    products,
-  } = useContext(WashListContext);
-  const isInWishlist = products.some((pro) => pro.id === product.id);
-  function addToWashListFunc(id) {
-    addProductToWashList(id);
-  }
+  const [buttonLoading, setButtonLoading] = useState(false);
+  const [heartLoading, setHeartLoading] = useState(false);
 
+  let { addToCart } = useContext(CartContext);
+  let { addProductToWashList, products } = useContext(WashListContext);
+  const isInWishlist = products.some((pro) => pro.id === product.id);
+  async function addToWashListFunc(id) {
+    setHeartLoading(true);
+    await addProductToWashList(id);
+    setHeartLoading(false);
+  }
+  async function handleAddToCart(id) {
+    setButtonLoading(true);
+    await addToCart(id);
+    setButtonLoading(false);
+  }
   return (
     <>
       <div
         key={product.id}
         className="relative card w-full sm:w-[45%] md:w-[32%] lg:w-[23%] p-4 mb-5 shadow-myShadow hover:shadow-lg rounded-md"
       >
-        {wLoading ? (
-          <Loading />
-        ) : (
-          <span
-            className="absolute left-3 top-4 cursor-pointer"
-            onClick={() => addToWashListFunc(product.id)}
-          >
+        <span
+          className="absolute left-3 top-4 cursor-pointer bg-[#f6f6f6] p-1"
+          onClick={() => addToWashListFunc(product.id)}
+        >
+          {heartLoading ? (
+            <i className="fas fa-spinner fa-spin text-[18px]"></i>
+          ) : (
             <i
-              className={`fa-solid fa-heart text-[30px] ${
-                isInWishlist ? "text-red-600" : "text-neutral-500"
+              className={`fa-solid fa-heart text-[20px] ${
+                isInWishlist ? "text-red-600" : "text-black/80"
               }`}
             ></i>
-          </span>
-        )}
+          )}
+        </span>
         <Link to={`/productdetails/${product.id}`}>
           {/* Product Image */}
           <div className="imgDiv w-full h-[300px] mb-3 overflow-hidden">
@@ -60,17 +64,16 @@ const ProductCard = ({ product }) => {
             </span>
           </div>
         </Link>
-        {/* Product Button */}
-        {loading ? (
-          <Loading />
-        ) : (
-          <button
-            className="w-full bg-main text-white p-1 py-2 mt-4 mb-3 rounded-lg font-semibold hover:scale-105 transition-all duration-500"
-            onClick={() => addToCart(product.id)}
-          >
-            ADD TO CART
-          </button>
-        )}
+        <button
+          className="w-full bg-main text-white p-1 py-2 mt-4 mb-3 rounded-lg font-semibold hover:scale-105 transition-all duration-500 capitalize"
+          onClick={() => handleAddToCart(product.id)}
+        >
+          {buttonLoading ? (
+            <i className="fas fa-spinner fa-spin text-[18px]"></i>
+          ) : (
+            "add to cart"
+          )}
+        </button>
       </div>
     </>
   );

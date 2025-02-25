@@ -11,7 +11,9 @@ const WashList = () => {
     removeItemFromWatchlist,
     error,
   } = useContext(WashListContext);
-
+  async function handleRemoveProduct(id) {
+    await removeItemFromWatchlist(id);
+  }
   useEffect(() => {
     getWatchlistProducts();
   }, []);
@@ -61,17 +63,13 @@ const WashList = () => {
                       </span>
                     </div>
                   </Link>
-                  {/* Submit Button*/}
-                  {loading ? (
-                    <Loading />
-                  ) : (
-                    <button
-                      className="w-full bg-red-900 text-white p-1 py-2 mt-4 rounded-lg font-semibold"
-                      onClick={() => removeItemFromWatchlist(product.id)}
-                    >
-                      Remove
-                    </button>
-                  )}
+
+                  <button
+                    className="w-full bg-red-900 text-white p-1 py-2 mt-4 rounded-lg font-semibold"
+                    onClick={() => handleRemoveProduct(product.id)}
+                  >
+                    Remove
+                  </button>
                 </div>
               );
             })}

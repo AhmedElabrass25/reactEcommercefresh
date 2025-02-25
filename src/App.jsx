@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import NotFound from "./components/NotFound/NotFound";
 import MyNav from "./components/MyNav/MyNav";
 import Footer from "./components/Footer/Footer";
@@ -8,7 +9,8 @@ import Login from "./components/Login/Login";
 import Cart from "./components/Cart/Cart";
 import Products from "./components/Products/Products";
 import Brands from "./components/Brands/Brands";
-import Categories from "./components/Categories/Categories";
+// <<<<lazy
+const Categories = lazy(() => import("./components/Categories/Categories"));
 import ProtectedRoute from "./components/ProtectedRoute";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import { Toaster } from "react-hot-toast";
@@ -18,6 +20,7 @@ import WashList from "./components/Washlist/WashList";
 import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import VerifyResetCode from "./components/ForgetPassword/VerifyResetCode";
 import ResetPassword from "./components/ForgetPassword/ResetPassword";
+import Loading from "./components/Loading/Loading";
 
 const App = () => {
   return (
@@ -91,9 +94,11 @@ const App = () => {
           <Route
             path="categories"
             element={
-              <ProtectedRoute>
-                <Categories />
-              </ProtectedRoute>
+              <Suspense fallback={<Loading />}>
+                <ProtectedRoute>
+                  <Categories />
+                </ProtectedRoute>
+              </Suspense>
             }
           />
           <Route

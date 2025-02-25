@@ -4,7 +4,7 @@ import Loading from "../Loading/Loading";
 import ProductCard from "../RecentProduct/ProductCard";
 
 const RelatedProducts = ({ category }) => {
-  console.log(category);
+  // console.log(category);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -15,12 +15,12 @@ const RelatedProducts = ({ category }) => {
       let { data } = await axios(
         `https://ecommerce.routemisr.com/api/v1/products`
       );
-      console.log(data?.data);
+      // console.log(data?.data);
       let newProducts = data?.data.filter(
         (pro) => pro?.category?.name === category
       );
       setRelatedProducts(newProducts);
-      console.log(newProducts);
+      // console.log(newProducts);
     } catch (error) {
       console.log(error?.response?.data?.message);
       setError(

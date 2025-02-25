@@ -21,13 +21,13 @@ const CartContextProvider = ({ children }) => {
       );
       // console.log(data);
       getCarts(); //vip
-      toast.success(data.message, {
+      toast.success("The Product is added successfully to cart", {
         duration: 2000,
         position: "top-center",
         style: {
-          zIndex: 10000,
+          zIndex: 100000,
           minWidth: "450px",
-          fontSize: "17px",
+          fontSize: "16px",
         },
       });
       return data;
