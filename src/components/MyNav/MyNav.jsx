@@ -16,7 +16,7 @@ const MyNav = () => {
   }
   return (
     <>
-      <nav className="bg-light w-full fixed left-0 top-0 right-0 z-[999]">
+      <nav className="bg-light w-full sticky left-0 top-0 right-0 z-[999]">
         <div className="container w-full py-4 flex items-center justify-between">
           <div className="w-full flex items-center justify-between">
             <div className="flex items-center">
@@ -152,30 +152,35 @@ const MyNav = () => {
             {userToken && (
               <div className="px-2 pt-2 mb-5 ml-5 sm:px-3 flex flex-col gap-5">
                 <NavLink
+                  onClick={() => openMeue(false)}
                   to="/"
                   className="block rounded-md text-base font-medium text-gray-500"
                 >
                   Home
                 </NavLink>
                 <NavLink
+                  onClick={() => openMeue(false)}
                   to="/products"
                   className="block rounded-md text-base font-medium text-gray-500"
                 >
                   Products
                 </NavLink>
                 <NavLink
+                  onClick={() => openMeue(false)}
                   to="/categories"
                   className="block rounded-md  text-base font-medium text-gray-500"
                 >
                   Categories
                 </NavLink>
                 <NavLink
+                  onClick={() => openMeue(false)}
                   to="/brands"
                   className="block rounded-md  text-base font-medium text-gray-500"
                 >
                   Brands
                 </NavLink>
                 <NavLink
+                  onClick={() => openMeue(false)}
                   to="/washlist"
                   className="rounded-md  text-[18px] md:max-lg:text-[16px] font-medium text-gray-500"
                 >
@@ -194,6 +199,7 @@ const MyNav = () => {
                       Logout
                     </span>
                     <Link
+                      onClick={() => openMeue(false)}
                       to="/cart"
                       className="fa-solid fa-shopping-cart text-3xl me-4 relative text-main cursor-pointer ms-5"
                     >

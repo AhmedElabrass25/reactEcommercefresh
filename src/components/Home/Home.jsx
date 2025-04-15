@@ -9,15 +9,15 @@ const Home = () => {
     getCarts();
   }, []);
   return (
-    <section>
+    <div className="mt-[2px]">
+      <MainSlider />
       <div className="container">
         <div className="row">
-          <MainSlider />
           <CategorySlider />
           <RecentProducts />
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

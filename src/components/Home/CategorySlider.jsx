@@ -64,11 +64,11 @@ const CategorySlider = () => {
     getAllGategory();
   }, []);
   return (
-    <div className="w-full my-6">
-      <h2 className="text-gray-700 capitalize mb-2">Categories</h2>
+    <div className="w-full my-6 mb-10">
+      <h2 className="text-gray-700 capitalize mb-2">popular Categories</h2>
       <Slider {...settings}>
         {categories.map((cat) => (
-          <div key={cat._id} className="text-center p-2 shadow-myShadow p-5">
+          <div key={cat._id} className="text-center shadow-myShadow p-5">
             <img
               src={cat.image}
               alt={cat.name}
